@@ -1,1 +1,2 @@
-# MATH244-Project-Website
+# Website Template
+Template repository for M244 Projects
