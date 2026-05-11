@@ -3930,13 +3930,13 @@ vertical-align: -.125em;
 <h3 class="anchored" data-anchor-id="machine-learning-pipeline">Machine Learning Pipeline</h3>
 <p>Our analysis was conducted using a robust Python-based pipeline integrated into our R environment via the <code>reticulate</code> package. The process involved several key stages:</p>
 <ul>
-<li><strong>Preprocessing</strong>: We used a <code>column_transformer</code> to handle different data types simultaneously.
+<li><p><strong>Preprocessing</strong>: We used a <code>column_transformer</code> to handle different data types simultaneously.</p>
 <ul>
-<li><strong>Categorical Variables</strong>: ‘Key’, ‘Explicit’, ‘Mode’, and ‘Genre’ were processed using One-Hot Encoding.</li>
-<li><strong>Numerical Variables</strong>: Features like ‘Danceability’ and ‘Energy’ were passed through a <code>StandardScaler</code> to ensure all predictors were on the same scale.</li>
+<li><p><strong>Categorical Variables</strong>: ‘Key’, ‘Explicit’, ‘Mode’, and ‘Genre’ were processed using One-Hot Encoding.</p></li>
+<li><p><strong>Numerical Variables</strong>: Features like ‘Danceability’ and ‘Energy’ were passed through a <code>StandardScaler</code> to ensure all predictors were on the same scale.</p></li>
 </ul></li>
-<li><strong>Cross-Validation</strong>: To ensure our results were generalizable, we utilized <strong>5-fold cross-validation</strong> during the model fitting process.</li>
-<li><strong>Data Splitting</strong>: The dataset was split into a <strong>Training Set (80%)</strong> to build the models and a <strong>Test Set (20%)</strong> to evaluate their final performance.</li>
+<li><p><strong>Cross-Validation</strong>: To ensure our results were generalizable, we utilized <strong>5-fold cross-validation</strong> during the model fitting process.</p></li>
+<li><p><strong>Data Splitting</strong>: The dataset was split into a <strong>Training Set (80%)</strong> to build the models and a <strong>Test Set (20%)</strong> to evaluate their final performance.</p></li>
 </ul>
 </section>
 <section id="lasso-vs.-ridge" class="level3">
@@ -3949,7 +3949,11 @@ vertical-align: -.125em;
 </section>
 <section id="evaluating-success" class="level3">
 <h3 class="anchored" data-anchor-id="evaluating-success">Evaluating Success</h3>
-<p>We evaluated our models based on three primary metrics: * <strong>Accuracy</strong>: The percentage of correct hit/non-hit predictions. * <strong>F1 Score</strong>: The balance between precision and recall. * <strong>ROC-AUC</strong>: The model’s ability to distinguish between the two classes across various thresholds.</p>
+<p>We evaluated our models based on three primary metrics: * <strong>Accuracy</strong>: The percentage of correct hit/non-hit predictions.</p>
+<ul>
+<li><p><strong>F1 Score</strong>: The balance between precision and recall.</p></li>
+<li><p><strong>ROC-AUC</strong>: The model’s ability to distinguish between the two classes across various thresholds.</p></li>
+</ul>
 <p>By comparing versions of these models with and without ‘Genre’ as a predictor, we aimed to isolate exactly how much the “sound” of a song matters versus its commercial category.</p>
 
 
