@@ -3869,7 +3869,11 @@ vertical-align: -.125em;
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./results.html"> 
-<span class="menu-text">Results and Discussion</span></a>
+<span class="menu-text">Modeling Results</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./discussion.html"> 
+<span class="menu-text">Discussion</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -3882,11 +3886,22 @@ vertical-align: -.125em;
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#modeling-approach" id="toc-modeling-approach" class="nav-link active" data-scroll-target="#modeling-approach">Modeling Approach</a>
+  <ul class="collapse">
+  <li><a href="#machine-learning-pipeline" id="toc-machine-learning-pipeline" class="nav-link" data-scroll-target="#machine-learning-pipeline">Machine Learning Pipeline</a></li>
+  <li><a href="#lasso-vs.-ridge" id="toc-lasso-vs.-ridge" class="nav-link" data-scroll-target="#lasso-vs.-ridge">LASSO vs. Ridge</a></li>
+  <li><a href="#evaluating-success" id="toc-evaluating-success" class="nav-link" data-scroll-target="#evaluating-success">Evaluating Success</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -3896,7 +3911,7 @@ vertical-align: -.125em;
 
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta column-page-left">
 
     
   
@@ -3908,8 +3923,38 @@ vertical-align: -.125em;
 </header>
 
 
+<section id="modeling-approach" class="level2">
+<h2 class="anchored" data-anchor-id="modeling-approach">Modeling Approach</h2>
+<p>To predict song success, we implemented two types of regularized linear classification models: <strong>LASSO (L1)</strong> and <strong>Ridge (L2)</strong> regression. These methods were chosen specifically to handle potential multicollinearity between musical features and to prevent overfitting by penalizing large coefficients.</p>
+<section id="machine-learning-pipeline" class="level3">
+<h3 class="anchored" data-anchor-id="machine-learning-pipeline">Machine Learning Pipeline</h3>
+<p>Our analysis was conducted using a robust Python-based pipeline integrated into our R environment via the <code>reticulate</code> package. The process involved several key stages:</p>
+<ul>
+<li><strong>Preprocessing</strong>: We used a <code>column_transformer</code> to handle different data types simultaneously.
+<ul>
+<li><strong>Categorical Variables</strong>: ‘Key’, ‘Explicit’, ‘Mode’, and ‘Genre’ were processed using One-Hot Encoding.</li>
+<li><strong>Numerical Variables</strong>: Features like ‘Danceability’ and ‘Energy’ were passed through a <code>StandardScaler</code> to ensure all predictors were on the same scale.</li>
+</ul></li>
+<li><strong>Cross-Validation</strong>: To ensure our results were generalizable, we utilized <strong>5-fold cross-validation</strong> during the model fitting process.</li>
+<li><strong>Data Splitting</strong>: The dataset was split into a <strong>Training Set (80%)</strong> to build the models and a <strong>Test Set (20%)</strong> to evaluate their final performance.</li>
+</ul>
+</section>
+<section id="lasso-vs.-ridge" class="level3">
+<h3 class="anchored" data-anchor-id="lasso-vs.-ridge">LASSO vs. Ridge</h3>
+<p>We tested both regularization techniques to see how they handled our feature set:</p>
+<ol type="1">
+<li><strong>LASSO Regression</strong>: Useful for feature selection, as it can shrink the coefficients of less important variables all the way to zero.</li>
+<li><strong>Ridge Regression</strong>: Useful for dealing with highly correlated variables (like ‘Energy’ and ‘Loudness’) by shrinking coefficients proportionally without eliminating them.</li>
+</ol>
+</section>
+<section id="evaluating-success" class="level3">
+<h3 class="anchored" data-anchor-id="evaluating-success">Evaluating Success</h3>
+<p>We evaluated our models based on three primary metrics: * <strong>Accuracy</strong>: The percentage of correct hit/non-hit predictions. * <strong>F1 Score</strong>: The balance between precision and recall. * <strong>ROC-AUC</strong>: The model’s ability to distinguish between the two classes across various thresholds.</p>
+<p>By comparing versions of these models with and without ‘Genre’ as a predictor, we aimed to isolate exactly how much the “sound” of a song matters versus its commercial category.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
