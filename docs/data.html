@@ -3870,11 +3870,25 @@ vertical-align: -.125em;
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#our-data-sources" id="toc-our-data-sources" class="nav-link active" data-scroll-target="#our-data-sources">Our Data Sources</a></li>
+  <li><a href="#the-cleaning-process" id="toc-the-cleaning-process" class="nav-link" data-scroll-target="#the-cleaning-process">The Cleaning Process</a>
+  <ul class="collapse">
+  <li><a href="#broadening-the-genre-spectrum" id="toc-broadening-the-genre-spectrum" class="nav-link" data-scroll-target="#broadening-the-genre-spectrum">1. Broadening the Genre Spectrum</a></li>
+  <li><a href="#standardizing-the-2010s-scope" id="toc-standardizing-the-2010s-scope" class="nav-link" data-scroll-target="#standardizing-the-2010s-scope">2. Standardizing the 2010s Scope</a></li>
+  <li><a href="#balancing-the-dataset" id="toc-balancing-the-dataset" class="nav-link" data-scroll-target="#balancing-the-dataset">3. Balancing the Dataset</a></li>
+  <li><a href="#normalization" id="toc-normalization" class="nav-link" data-scroll-target="#normalization">4. Normalization</a></li>
+  </ul></li>
+  <li><a href="#final-dataset-structure" id="toc-final-dataset-structure" class="nav-link" data-scroll-target="#final-dataset-structure">Final Dataset Structure</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -3884,7 +3898,7 @@ vertical-align: -.125em;
 
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta column-page-left">
 
     
   
@@ -3896,9 +3910,87 @@ vertical-align: -.125em;
 </header>
 
 
-<p>Example of adding another page to a website.</p>
+<section id="our-data-sources" class="level2">
+<h2 class="anchored" data-anchor-id="our-data-sources">Our Data Sources</h2>
+<p>To understand the 2010s music landscape, we utilized the <strong>MusicOSet</strong> dataset, which provides an enhanced collection of musical elements perfect for data mining. Our analysis relied on three primary files:</p>
+<ol type="1">
+<li><strong>hits_dataset.csv</strong>: Spotify audio features for 11,959 songs that appeared on the Billboard Hot 100.</li>
+<li><strong>nonhits_dataset.csv</strong>: Features for 899,068 songs by “hit artists” (artists that had at least one charting song) that did not chart.</li>
+<li><strong>artists.csv</strong>: Metadata for 11,518 artists, including their associated genres.</li>
+</ol>
+</section>
+<section id="the-cleaning-process" class="level2">
+<h2 class="anchored" data-anchor-id="the-cleaning-process">The Cleaning Process</h2>
+<section id="broadening-the-genre-spectrum" class="level3">
+<h3 class="anchored" data-anchor-id="broadening-the-genre-spectrum">1. Broadening the Genre Spectrum</h3>
+<p>The raw <code>main_genre</code> data was often too specific or niche for effective modeling. We used keyword searches to group these into broader categories such as ‘Pop’, ‘Hip Hop/Rap’, ‘Rock/Metal’, and ‘Electronic/Dance’. Any genres with fewer than 100 observations were moved into an ‘Other’ category to maintain statistical significance.</p>
+</section>
+<section id="standardizing-the-2010s-scope" class="level3">
+<h3 class="anchored" data-anchor-id="standardizing-the-2010s-scope">2. Standardizing the 2010s Scope</h3>
+<p>Because our project focuses on the 2010s, we applied several strict filters:</p>
+<ul>
+<li><p><strong>Timeframe</strong>: We only kept tracks with a release date between 2010 and 2019.</p></li>
+<li><p><strong>Consistency</strong>: We dropped songs by artists who did not have at least one hit during this specific decade (to create two comparable datasets where popularity of the arist during this period is less of a factor).</p></li>
+<li><p><strong>Outlier Removal</strong>: We identified and removed certain “artists” who uploaded extremely long mixes of other songs, which skewed our <code>duration_ms</code> column.</p></li>
+</ul>
+</section>
+<section id="balancing-the-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="balancing-the-dataset">3. Balancing the Dataset</h3>
+<p>The raw data was heavily skewed toward non-hits (nearly 900,000 vs. 12,000 hits). To create a fair classification model, we:</p>
+<ul>
+<li><p>Took a random sample of non-hits equal to the number of hits.</p></li>
+<li><p>This resulted in a final <code>combined_music_data</code> set of <strong>8,132 songs</strong> (4,066 hits and 4,066 non-hits).</p></li>
+</ul>
+</section>
+<section id="normalization" class="level3">
+<h3 class="anchored" data-anchor-id="normalization">4. Normalization</h3>
+<p>To ensure our model wasn’t influenced by the different scale for certain measurements, we normalized multiple key variables—<strong>loudness</strong>, <strong>tempo</strong>, and <strong>duration_ms</strong>—onto a scale of 0 to 1.</p>
+<hr>
+</section>
+</section>
+<section id="final-dataset-structure" class="level2">
+<h2 class="anchored" data-anchor-id="final-dataset-structure">Final Dataset Structure</h2>
+<p>After cleaning, our dataset consisted of 8,132 observations across 16 variables. Below is the summary of our primary explanatory variables after normalization:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variable</th>
+<th style="text-align: center;">Mean</th>
+<th style="text-align: center;">Std. Deviation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">duration_ms</td>
+<td style="text-align: center;">0.170</td>
+<td style="text-align: center;">0.050</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">danceability</td>
+<td style="text-align: center;">0.655</td>
+<td style="text-align: center;">0.147</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">energy</td>
+<td style="text-align: center;">0.686</td>
+<td style="text-align: center;">0.173</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">loudness</td>
+<td style="text-align: center;">0.774</td>
+<td style="text-align: center;">0.076</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">acousticness</td>
+<td style="text-align: center;">0.160</td>
+<td style="text-align: center;">0.207</td>
+</tr>
+</tbody>
+</table>
+<p><em>Note: The tight distribution of duration shows that most successful songs in this era adhered to a very specific length</em></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
