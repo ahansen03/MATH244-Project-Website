@@ -3893,9 +3893,9 @@ vertical-align: -.125em;
   <ul>
   <li><a href="#model-performance" id="toc-model-performance" class="nav-link active" data-scroll-target="#model-performance">Model Performance</a>
   <ul class="collapse">
-  <li><a href="#key-metrics" id="toc-key-metrics" class="nav-link" data-scroll-target="#key-metrics">Key Metrics</a></li>
-  <li><a href="#significant-predictors" id="toc-significant-predictors" class="nav-link" data-scroll-target="#significant-predictors">Significant Predictors</a></li>
+  <li><a href="#key-model-metrics-and-features" id="toc-key-model-metrics-and-features" class="nav-link" data-scroll-target="#key-model-metrics-and-features">Key Model Metrics and Features</a></li>
   <li><a href="#summary-table-model-comparison" id="toc-summary-table-model-comparison" class="nav-link" data-scroll-target="#summary-table-model-comparison">Summary Table: Model Comparison</a></li>
+  <li><a href="#model-results-interpretation" id="toc-model-results-interpretation" class="nav-link" data-scroll-target="#model-results-interpretation">Model Results Interpretation</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -3925,26 +3925,139 @@ vertical-align: -.125em;
 
 <section id="model-performance" class="level2">
 <h2 class="anchored" data-anchor-id="model-performance">Model Performance</h2>
-<p>Our primary goal was to differentiate between hit and non-hit songs with better than 50% accuracy. [cite_start]Both our LASSO and Ridge models successfully exceeded this threshold, achieving approximately <strong>67% accuracy</strong> on the test data[cite: 113, 117, 128].</p>
-<section id="key-metrics" class="level3">
-<h3 class="anchored" data-anchor-id="key-metrics">Key Metrics</h3>
-<p>Whether we used the L1 (LASSO) or L2 (Ridge) penalty, the performance remained remarkably consistent:</p>
+<p>Our primary goal was to differentiate between hit and non-hit songs with better than 50% accuracy. Both our LASSO and Ridge models successfully exceeded this threshold, achieving approximately <strong>67% accuracy</strong> on the test data.</p>
+<section id="key-model-metrics-and-features" class="level3">
+<h3 class="anchored" data-anchor-id="key-model-metrics-and-features">Key Model Metrics and Features</h3>
+<p>Whether we used the L1 (LASSO) or L2 (Ridge) penalty, the performance was consistent:</p>
 <ul>
-<li>[cite_start]<strong>Accuracy</strong>: ~67.1%</li>
-<li>[cite_start]<strong>F1 Score</strong>: 0.68</li>
-<li>[cite_start]<strong>ROC-AUC</strong>: 0.73</li>
+<li><strong>Accuracy</strong>: ~67.1%</li>
+<li><strong>F1 Score</strong>: 0.70</li>
+<li><strong>ROC-AUC</strong>: 0.73</li>
 </ul>
-<p>[cite_start]Interestingly, removing “Genre” as a predictor only slightly decreased the accuracy (to about 66.5%), suggesting that the raw audio characteristics themselves carry significant weight regardless of how the song is categorized[cite: 123, 127].</p>
-</section>
-<section id="significant-predictors" class="level3">
-<h3 class="anchored" data-anchor-id="significant-predictors">Significant Predictors</h3>
-<p>The models identified several audio features that strongly influenced the likelihood of a song becoming a hit:</p>
-<ol type="1">
-<li><strong>Instrumentalness (Negative)</strong>: The strongest predictor. [cite_start]Songs with high instrumental content were significantly less likely to chart[cite: 112, 116].</li>
-<li>[cite_start]<strong>Danceability (Positive)</strong>: Higher danceability scores were consistently tied to hit status[cite: 112, 116].</li>
-<li>[cite_start]<strong>Loudness (Positive)</strong>: Consistent with the “loudness wars” of the 2010s, louder tracks had a higher probability of success[cite: 112, 116].</li>
-<li>[cite_start]<strong>Acousticness (Negative)</strong>: More “plugged-in” or produced sounds tended to perform better on the Billboard Hot 100 than acoustic tracks[cite: 112, 116].</li>
-</ol>
+<p>The models identified several audio features that strongly influenced the likelihood of a song becoming a hit. The table below demonstrates the top 10 most influential predictors when genre was included across the two models:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Feature</th>
+<th style="text-align: center;">LASSO</th>
+<th style="text-align: center;">Ridge</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>genre_Other</strong></td>
+<td style="text-align: center;">-1.34</td>
+<td style="text-align: center;">-1.39</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>genre_Indie</strong></td>
+<td style="text-align: center;">-0.99</td>
+<td style="text-align: center;">-1.03</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>explicit_True</strong></td>
+<td style="text-align: center;">0.66</td>
+<td style="text-align: center;">0.68</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>instrumentalness</strong></td>
+<td style="text-align: center;">-0.48</td>
+<td style="text-align: center;">-0.48</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>genre_Rock/Metal</strong></td>
+<td style="text-align: center;">-0.41</td>
+<td style="text-align: center;">-0.46</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>genre_Hip Hop/Rap</strong></td>
+<td style="text-align: center;">-0.39</td>
+<td style="text-align: center;">-0.46</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>genre_Electronic/Dance</strong></td>
+<td style="text-align: center;">-0.23</td>
+<td style="text-align: center;">-0.32</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>genre_Soundtrack/Theater</strong></td>
+<td style="text-align: center;">0.23</td>
+<td style="text-align: center;">0.30</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>loudness</strong></td>
+<td style="text-align: center;">0.22</td>
+<td style="text-align: center;">0.21</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>speechiness</strong></td>
+<td style="text-align: center;">-0.19</td>
+<td style="text-align: center;">-0.19</td>
+</tr>
+</tbody>
+</table>
+<p>Interestingly, removing “Genre” as a predictor only slightly decreased the accuracy (to ~65%), suggesting that the raw audio characteristics themselves carry significant weight regardless of how the song is categorized (despite the fact that genres made up a significant portion of the top predictors). The table below demonstrates the top 10 most influential predictors when genre was not included across the two models:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Feature</th>
+<th style="text-align: center;">LASSO</th>
+<th style="text-align: center;">Ridge</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>explicit_True</strong></td>
+<td style="text-align: center;">0.63</td>
+<td style="text-align: center;">0.66</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>instrumentalness</strong></td>
+<td style="text-align: center;">-0.61</td>
+<td style="text-align: center;">-0.61</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>loudness</strong></td>
+<td style="text-align: center;">0.32</td>
+<td style="text-align: center;">0.32</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>speechiness</strong></td>
+<td style="text-align: center;">-0.19</td>
+<td style="text-align: center;">-0.20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>liveness</strong></td>
+<td style="text-align: center;">-0.17</td>
+<td style="text-align: center;">-0.17</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>valence</strong></td>
+<td style="text-align: center;">0.14</td>
+<td style="text-align: center;">0.14</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>key_1.0</strong></td>
+<td style="text-align: center;">0.11</td>
+<td style="text-align: center;">0.16</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>acousticness</strong></td>
+<td style="text-align: center;">-0.13</td>
+<td style="text-align: center;">-0.13</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>key_11.0</strong></td>
+<td style="text-align: center;">0.09</td>
+<td style="text-align: center;">0.15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>key_7.0</strong></td>
+<td style="text-align: center;">-0.11</td>
+<td style="text-align: center;">-0.10</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="summary-table-model-comparison" class="level3">
 <h3 class="anchored" data-anchor-id="summary-table-model-comparison">Summary Table: Model Comparison</h3>
@@ -3960,25 +4073,40 @@ vertical-align: -.125em;
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">LASSO (with Genre)</td>
-<td style="text-align: center;">67.12%</td>
-<td style="text-align: center;">0.68</td>
+<td style="text-align: center;">67.06%</td>
+<td style="text-align: center;">0.7</td>
 <td style="text-align: center;">0.73</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Ridge (with Genre)</td>
 <td style="text-align: center;">67.12%</td>
-<td style="text-align: center;">0.68</td>
+<td style="text-align: center;">0.7</td>
 <td style="text-align: center;">0.73</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">LASSO (no Genre)</td>
-<td style="text-align: center;">66.52%</td>
-<td style="text-align: center;">0.67</td>
-<td style="text-align: center;">0.72</td>
+<td style="text-align: center;">65.15%</td>
+<td style="text-align: center;">0.69</td>
+<td style="text-align: center;">0.71</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ridge (no Genre)</td>
+<td style="text-align: center;">64.97%</td>
+<td style="text-align: center;">0.68</td>
+<td style="text-align: center;">0.71</td>
 </tr>
 </tbody>
 </table>
-<p>[cite_start]While our model isn’t perfect, a 67% success rate proves that there is indeed a “tangible formula” to 2010s hits that goes beyond simple marketing luck[cite: 128].</p>
+</section>
+<section id="model-results-interpretation" class="level3">
+<h3 class="anchored" data-anchor-id="model-results-interpretation">Model Results Interpretation</h3>
+<p>While marketing and luck undoubtedly play a role, our models suggest that approximately two-thirds of a song’s chart success can be explained by track characteristics. Key takeaways from our LASSO and Ridge analysis include:</p>
+<ul>
+<li><p>Even when we removed the <strong>Genre</strong> tags, the models only lost ~2% accuracy. This indicates that the characteristics of the audio help us to predict song success without genre labels.</p></li>
+<li><p><strong>Instrumentalness</strong> was one of the most powerful negative predictors across all models. In the 2010s, songs that reached mainstream success were often characterized as “vocal-heavy” and lacking significant instrumental presence.</p></li>
+<li><p>The positive coefficients for <strong>Loudness</strong> and <strong>Explicit (True)</strong> suggest that the 2010s favored assertive and “in your face” tracks. Conversely, the negative coefficients for <strong>Acousticness</strong> and <strong>Instrumentalness</strong> highlight that the 2010s largely shyed away from calm musical arrangements in the mainstream.</p></li>
+</ul>
+<p>While our model isn’t perfect, a 67% success rate proves that there is indeed a “tangible formula” to 2010s hits that goes beyond simple marketing luck.</p>
 
 
 </section>
