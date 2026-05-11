@@ -1,7 +1,14 @@
 [
   {
-    "objectID": "Results and Discussion.html",
-    "href": "Results and Discussion.html",
+    "objectID": "data.html",
+    "href": "data.html",
+    "title": "Data and Cleaning",
+    "section": "",
+    "text": "Example of adding another page to a website."
+  },
+  {
+    "objectID": "results.html",
+    "href": "results.html",
     "title": "Results and Discussion",
     "section": "",
     "text": "Example of adding another page to a website."
