@@ -3913,21 +3913,26 @@ vertical-align: -.125em;
 <p>Our project, “The Danish Club,” seeks to answer this by analyzing a comprehensive sample of hit and non-hit songs released between <strong>2010 and 2019</strong>. We define a “hit” specifically as any song that made an appearance on the <strong>Billboard Hot 100</strong> at any point after it is released.</p>
 <section id="why-the-2010s" class="level3">
 <h3 class="anchored" data-anchor-id="why-the-2010s">Why the 2010s?</h3>
-<p>We chose to focus on the 2010s for several reasons: * [cite_start]<strong>Formative Years</strong>: This decade represents the childhood and teenage years for many in our generation, making the music personally resonant. [cite: 67] * [cite_start]<strong>Lasting Impact</strong>: The music from this era was exceptionally high-quality, with many tracks still frequently charting or receiving heavy rotation today. [cite: 67] * [cite_start]<strong>Shifting Trends</strong>: The criteria for what makes a song “successful” appeared to undergo significant shifts during this ten-year window. [cite: 67]</p>
+<p>We chose to focus on the 2010s for several reasons:</p>
+<ul>
+<li><p><strong>Formative Years</strong>: This decade represents the childhood and teenage years for many in our generation, making the music personally resonant.</p></li>
+<li><p><strong>Lasting Impact</strong>: The music from this era was exceptionally high-quality, with many tracks still frequently charting or receiving heavy rotation today.</p></li>
+<li><p><strong>Shifting Trends</strong>: The criteria for what makes a song “successful” appeared to undergo significant shifts during this ten-year window.</p></li>
+</ul>
 </section>
 <section id="our-research-goal" class="level3">
 <h3 class="anchored" data-anchor-id="our-research-goal">Our Research Goal</h3>
-<p>[cite_start]The primary objective of this study is to predict the success of 2010s songs based on their specific audio characteristics. [cite: 67] [cite_start]We aimed to build a classification model capable of differentiating hit songs from non-hit songs with at least <strong>50% accuracy</strong>. [cite: 67]</p>
+<p>The primary objective of this study is to predict the success of 2010s songs based on their specific audio characteristics. We aimed to build a classification model capable of differentiating hit songs from non-hit songs with at least <strong>50% accuracy</strong> (better than just random guessing!).</p>
 </section>
 <section id="hypotheses" class="level3">
 <h3 class="anchored" data-anchor-id="hypotheses">Hypotheses</h3>
 <p>Going into our modeling phase, we developed two sets of expectations regarding Spotify’s audio features:</p>
 <ol type="1">
-<li>[cite_start]<strong>Predictors of Success</strong>: We hypothesized that higher <strong>danceability</strong>, <strong>valence</strong> (musical positiveness), and <strong>loudness</strong> would significantly increase a song’s likelihood of becoming a hit. [cite: 105] [cite_start]Conversely, we expected lower <strong>duration</strong>, <strong>acousticness</strong>, <strong>speechiness</strong>, and <strong>instrumentalness</strong> to be associated with chart success. [cite: 105]</li>
-<li>[cite_start]<strong>Neutral Elements</strong>: We predicted that features like <strong>key</strong>, <strong>tempo</strong>, <strong>mode</strong>, and whether a song is <strong>explicit</strong> would have little to no measurable effect on a song’s probability of charting. [cite: 105]</li>
+<li><strong>Predictors of Success</strong>: We hypothesized that higher <strong>danceability</strong>, <strong>valence</strong> (musical positiveness), and <strong>loudness</strong> would significantly increase a song’s likelihood of becoming a hit. Conversely, we expected lower <strong>duration</strong>, <strong>acousticness</strong>, <strong>speechiness</strong>, and <strong>instrumentalness</strong> to be associated with chart success.</li>
+<li><strong>Neutral Elements</strong>: We predicted that features like <strong>key</strong>, <strong>tempo</strong>, <strong>mode</strong>, and whether a song is <strong>explicit</strong> would have little to no measurable effect on a song’s probability of charting.</li>
 </ol>
 <hr>
-<p>Next, we will dive into the <strong>Data and Cleaning</strong> process to show how we narrowed down nearly a million observations into a balanced dataset for our analysis.</p>
+<p>Next, we will dive into the <strong>Data and Cleaning</strong> process to show how we narrowed down nearly a million observations into a clean, balanced dataset for our analysis and modeling.</p>
 
 
 </section>
