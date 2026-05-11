@@ -3890,12 +3890,12 @@ vertical-align: -.125em;
   <li><a href="#our-data-sources" id="toc-our-data-sources" class="nav-link active" data-scroll-target="#our-data-sources">Our Data Sources</a></li>
   <li><a href="#the-cleaning-process" id="toc-the-cleaning-process" class="nav-link" data-scroll-target="#the-cleaning-process">The Cleaning Process</a>
   <ul class="collapse">
-  <li><a href="#broadening-the-genre-spectrum" id="toc-broadening-the-genre-spectrum" class="nav-link" data-scroll-target="#broadening-the-genre-spectrum">1. Broadening the Genre Spectrum</a></li>
+  <li><a href="#broadening-the-genre-categories" id="toc-broadening-the-genre-categories" class="nav-link" data-scroll-target="#broadening-the-genre-categories">1. Broadening the Genre Categories</a></li>
   <li><a href="#standardizing-the-2010s-scope" id="toc-standardizing-the-2010s-scope" class="nav-link" data-scroll-target="#standardizing-the-2010s-scope">2. Standardizing the 2010s Scope</a></li>
   <li><a href="#balancing-the-dataset" id="toc-balancing-the-dataset" class="nav-link" data-scroll-target="#balancing-the-dataset">3. Balancing the Dataset</a></li>
   <li><a href="#normalization" id="toc-normalization" class="nav-link" data-scroll-target="#normalization">4. Normalization</a></li>
   </ul></li>
-  <li><a href="#final-dataset-structure" id="toc-final-dataset-structure" class="nav-link" data-scroll-target="#final-dataset-structure">Final Dataset Structure</a></li>
+  <li><a href="#final-dataset-structure-and-codebook" id="toc-final-dataset-structure-and-codebook" class="nav-link" data-scroll-target="#final-dataset-structure-and-codebook">Final Dataset Structure and Codebook</a></li>
   </ul>
 </nav>
     </div>
@@ -3924,31 +3924,31 @@ vertical-align: -.125em;
 
 <section id="our-data-sources" class="level2">
 <h2 class="anchored" data-anchor-id="our-data-sources">Our Data Sources</h2>
-<p>To understand the 2010s music landscape, we utilized the <strong>MusicOSet</strong> dataset, which provides an enhanced collection of musical elements perfect for data mining. Our analysis relied on three primary files:</p>
+<p>To understand the 2010s music landscape, we utilized the <a href="https://marianaossilva.github.io/DSW2019/"><strong>MusicOSet</strong></a> dataset, which provides an open and enhanced collection of musical elements suitable for data mining. Our analysis relied on three primary files:</p>
 <ol type="1">
 <li><strong>hits_dataset.csv</strong>: Spotify audio features for 11,959 songs that appeared on the Billboard Hot 100.</li>
-<li><strong>nonhits_dataset.csv</strong>: Features for 899,068 songs by “hit artists” (artists that had at least one charting song) that did not chart.</li>
+<li><strong>nonhits_dataset.csv</strong>: Spotify audio features for 899,068 songs by “hit artists” (artists that had at least one charting song) that did not chart.</li>
 <li><strong>artists.csv</strong>: Metadata for 11,518 artists, including their associated genres.</li>
 </ol>
 </section>
 <section id="the-cleaning-process" class="level2">
 <h2 class="anchored" data-anchor-id="the-cleaning-process">The Cleaning Process</h2>
-<section id="broadening-the-genre-spectrum" class="level3">
-<h3 class="anchored" data-anchor-id="broadening-the-genre-spectrum">1. Broadening the Genre Spectrum</h3>
-<p>The raw <code>main_genre</code> data was often too specific or niche for effective modeling. We used keyword searches to group these into broader categories such as ‘Pop’, ‘Hip Hop/Rap’, ‘Rock/Metal’, and ‘Electronic/Dance’. Any genres with fewer than 100 observations were moved into an ‘Other’ category to maintain statistical significance.</p>
+<section id="broadening-the-genre-categories" class="level3">
+<h3 class="anchored" data-anchor-id="broadening-the-genre-categories">1. Broadening the Genre Categories</h3>
+<p>In the artists dataset, the <code>main_genre</code> entries were often too specific/niche for effective usage We used keyword searches to group these into broader categories such as ‘Pop’, ‘Hip Hop/Rap’, ‘Rock/Metal’, and ‘Electronic/Dance’, among others. Any genres with fewer than 100 associated artists were moved into an ‘Other’ category to maintain statistical significance.</p>
 </section>
 <section id="standardizing-the-2010s-scope" class="level3">
 <h3 class="anchored" data-anchor-id="standardizing-the-2010s-scope">2. Standardizing the 2010s Scope</h3>
-<p>Because our project focuses on the 2010s, we applied several strict filters:</p>
+<p>We applied several filters to our hits and nonhits datasets:</p>
 <ul>
-<li><p><strong>Timeframe</strong>: We only kept tracks with a release date between 2010 and 2019.</p></li>
+<li><p><strong>Timeframe</strong>: We only kept tracks with a release date between 2010 and 2019, since this is the scope of interest. Since the provided <code>release_date</code> was based on when the song was uploaded to Spotify, artists whose older music (typically made before the streaming era) was added to Spotify during this period were also removed.</p></li>
 <li><p><strong>Consistency</strong>: We dropped songs by artists who did not have at least one hit during this specific decade (to create two comparable datasets where popularity of the arist during this period is less of a factor).</p></li>
-<li><p><strong>Outlier Removal</strong>: We identified and removed certain “artists” who uploaded extremely long mixes of other songs, which skewed our <code>duration_ms</code> column.</p></li>
+<li><p><strong>Outlier/Missing Artist Removal</strong>: We identified and removed certain “artists” who uploaded extremely long mixes of multiple songs (like workout mixes), which skewed our <code>duration_ms</code> column. We also removed artists that were not found in the artists dataset, and thus wouldn’t have been able to be assigned to a genre.</p></li>
 </ul>
 </section>
 <section id="balancing-the-dataset" class="level3">
 <h3 class="anchored" data-anchor-id="balancing-the-dataset">3. Balancing the Dataset</h3>
-<p>The raw data was heavily skewed toward non-hits (nearly 900,000 vs. 12,000 hits). To create a fair classification model, we:</p>
+<p>The raw data was heavily skewed toward non-hits (nearly 900,000 non-hits vs. 12,000 hits). To create a fair classification model (one that wouldn’t succeed by guessing “not a hit” everytime), we:</p>
 <ul>
 <li><p>Took a random sample of non-hits equal to the number of hits.</p></li>
 <li><p>This resulted in a final <code>combined_music_data</code> set of <strong>8,132 songs</strong> (4,066 hits and 4,066 non-hits).</p></li>
@@ -3960,46 +3960,106 @@ vertical-align: -.125em;
 <hr>
 </section>
 </section>
-<section id="final-dataset-structure" class="level2">
-<h2 class="anchored" data-anchor-id="final-dataset-structure">Final Dataset Structure</h2>
-<p>After cleaning, our dataset consisted of 8,132 observations across 16 variables. Below is the summary of our primary explanatory variables after normalization:</p>
+<section id="final-dataset-structure-and-codebook" class="level2">
+<h2 class="anchored" data-anchor-id="final-dataset-structure-and-codebook">Final Dataset Structure and Codebook</h2>
+<p>After cleaning, our dataset consisted of 8,132 observations across 16 variables. Below is the summary of our primary explanatory variables after normalization, as well as what they mean and our interpretation of their summary statistics. Unless stated otherwise, 1 indicates a high level of the variable and 0 indicates a low level.</p>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 25%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 25%">
+</colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Variable</th>
+<th style="text-align: left;">Description</th>
 <th style="text-align: center;">Mean</th>
 <th style="text-align: center;">Std. Deviation</th>
+<th style="text-align: left;">Interpretation</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">duration_ms</td>
-<td style="text-align: center;">0.170</td>
-<td style="text-align: center;">0.050</td>
+<td style="text-align: left;">length of track (milliseconds), standardized from 0 (short) to 1 (long)</td>
+<td style="text-align: center;">0.085</td>
+<td style="text-align: center;">0.032</td>
+<td style="text-align: left;">a minority of long tracks still skew distribution, most tracks are fairly similar</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">danceability</td>
-<td style="text-align: center;">0.655</td>
-<td style="text-align: center;">0.147</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">energy</td>
-<td style="text-align: center;">0.686</td>
-<td style="text-align: center;">0.173</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">loudness</td>
-<td style="text-align: center;">0.774</td>
-<td style="text-align: center;">0.076</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">acousticness</td>
-<td style="text-align: center;">0.160</td>
-<td style="text-align: center;">0.207</td>
+<td style="text-align: left;">how acoustic a track is</td>
+<td style="text-align: center;">0.329</td>
+<td style="text-align: center;">0.331</td>
+<td style="text-align: left;">most track are not very acoustic</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">danceability</td>
+<td style="text-align: left;">how suitable a track is for dancing</td>
+<td style="text-align: center;">0.578</td>
+<td style="text-align: center;">0.161</td>
+<td style="text-align: left;">on average, tracks lean towards being danceable but not overwhelmingly</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">energy</td>
+<td style="text-align: left;">how intense/active a track is</td>
+<td style="text-align: center;">0.590</td>
+<td style="text-align: center;">0.232</td>
+<td style="text-align: left;">similar to above, leaning towards high energy with significant variation</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">instrumentalness</td>
+<td style="text-align: left;">how instrumental a track is (as opposed to vocal)</td>
+<td style="text-align: center;">0.119</td>
+<td style="text-align: center;">0.279</td>
+<td style="text-align: left;">most tracks are not instrumental and contain vocals (as expected)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">liveness</td>
+<td style="text-align: left;">detects the presence of an audience in a track, values closer to 1 indicate a live performance</td>
+<td style="text-align: center;">0.210</td>
+<td style="text-align: center;">0.191</td>
+<td style="text-align: left;">most tracks are not live recordings (as expected)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">loudness</td>
+<td style="text-align: left;">perceived loudness of a track, measured in decibels (dB)</td>
+<td style="text-align: center;">0.857</td>
+<td style="text-align: center;">0.077</td>
+<td style="text-align: left;">tracks mostly reside around the same loudness (as expected)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">speechiness</td>
+<td style="text-align: left;">detects spoken word in a track (e.g. audiobook, podcast, news clip), values closer to 1 indicate spoken word as opposed to typical music</td>
+<td style="text-align: center;">0.082</td>
+<td style="text-align: center;">0.104</td>
+<td style="text-align: left;">most tracks are not spoken word and instead are music (as expected)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">valence</td>
+<td style="text-align: left;">how “positive” a track is</td>
+<td style="text-align: center;">0.506</td>
+<td style="text-align: center;">0.247</td>
+<td style="text-align: left;">on average, leans positive but significant variation</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">tempo</td>
+<td style="text-align: left;">musical “speed” of a track, in beats per minute (BPM)</td>
+<td style="text-align: center;">0.577</td>
+<td style="text-align: center;">0.139</td>
+<td style="text-align: left;">healthy distribution of tempos across dataset</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">explicit</td>
+<td style="text-align: left;">boolean indicating if a track is tagged as being explicit</td>
+<td style="text-align: center;">0.14</td>
+<td style="text-align: center;">0.347</td>
+<td style="text-align: left;">14% of tracks in the cleaned, combined dataset are labeled as “explicit” (slightly lower than expected)</td>
 </tr>
 </tbody>
 </table>
-<p><em>Note: The tight distribution of duration shows that most successful songs in this era adhered to a very specific length</em></p>
 
 
 </section>
