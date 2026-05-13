@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Methodology – M244 Project</title>
+<title>Introduction – M244 Project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -3856,7 +3856,7 @@ vertical-align: -.125em;
 <span class="menu-text">MATH 244: Intermediate Data Science Project</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./introduction.html"> 
+    <a class="nav-link active" href="./introduction.html" aria-current="page"> 
 <span class="menu-text">Introduction</span></a>
   </li>  
   <li class="nav-item">
@@ -3868,7 +3868,7 @@ vertical-align: -.125em;
 <span class="menu-text">Exploratory Data Analysis</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./methodology.html" aria-current="page"> 
+    <a class="nav-link" href="./methodology.html"> 
 <span class="menu-text">Methodology</span></a>
   </li>  
   <li class="nav-item">
@@ -3895,11 +3895,11 @@ vertical-align: -.125em;
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#modeling-approach" id="toc-modeling-approach" class="nav-link active" data-scroll-target="#modeling-approach">Modeling Approach</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
-  <li><a href="#machine-learning-pipeline" id="toc-machine-learning-pipeline" class="nav-link" data-scroll-target="#machine-learning-pipeline">Machine Learning Pipeline</a></li>
-  <li><a href="#lasso-vs.-ridge" id="toc-lasso-vs.-ridge" class="nav-link" data-scroll-target="#lasso-vs.-ridge">LASSO vs. Ridge</a></li>
-  <li><a href="#evaluating-success" id="toc-evaluating-success" class="nav-link" data-scroll-target="#evaluating-success">Evaluating Success</a></li>
+  <li><a href="#why-the-2010s" id="toc-why-the-2010s" class="nav-link" data-scroll-target="#why-the-2010s">Why the 2010s?</a></li>
+  <li><a href="#our-goal" id="toc-our-goal" class="nav-link" data-scroll-target="#our-goal">Our Goal</a></li>
+  <li><a href="#hypotheses" id="toc-hypotheses" class="nav-link" data-scroll-target="#hypotheses">Hypotheses</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -3909,7 +3909,7 @@ vertical-align: -.125em;
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Methodology</h1>
+<h1 class="title">Introduction</h1>
 <p class="subtitle lead">Spring 2026</p>
 </div>
 
@@ -3927,38 +3927,32 @@ vertical-align: -.125em;
 </header>
 
 
-<section id="modeling-approach" class="level2">
-<h2 class="anchored" data-anchor-id="modeling-approach">Modeling Approach</h2>
-<p>To predict song success, we implemented two classification models: <strong>LASSO (L1)</strong> and <strong>Ridge (L2)</strong> regression. These methods were chosen because of their ability to handle multicollinearity between musical features (which we observed between a few of the metrics) and prevent overfitting by penalizing large coefficients.</p>
-<section id="machine-learning-pipeline" class="level3">
-<h3 class="anchored" data-anchor-id="machine-learning-pipeline">Machine Learning Pipeline</h3>
-<p>Our analysis was conducted using a Python-based pipeline integrated into our R environment via the <code>reticulate</code> package. The process involved several key stages:</p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>In the music industry, there is a long-standing debate: is a song’s success driven by its quantifiable musical characteristics, or is it a product of “unmeasurables” like marketing, catchiness, pure luck, and timing, among others?</p>
+<p>Our project seeks to address this by analyzing a comprehensive sample of hit and non-hit songs released between <strong>2010 and 2019</strong>. We define a “hit” specifically as any song that made an appearance on the <strong>Billboard Hot 100</strong> at some point after its release.</p>
+<section id="why-the-2010s" class="level3">
+<h3 class="anchored" data-anchor-id="why-the-2010s">Why the 2010s?</h3>
+<p>We chose to focus on the 2010s for several reasons:</p>
 <ul>
-<li><p><strong>Preprocessing</strong>: We used a <code>column_transformer</code> to handle different data types simultaneously.</p>
-<ul>
-<li><p><strong>Categorical Variables</strong>: ‘Key’, ‘Explicit’, ‘Mode’, and ‘Genre’ were processed using One-Hot Encoding.</p></li>
-<li><p><strong>Numerical Variables</strong>: All features on a 0-1 scale were passed through a <code>StandardScaler</code> to ensure all predictors were on the same scale.</p></li>
-</ul></li>
-<li><p><strong>Cross-Validation</strong>: To ensure our results were generalizable, we utilized <strong>5-fold cross-validation</strong> during the model fitting process.</p></li>
-<li><p><strong>Data Splitting</strong>: The dataset was split into a <strong>Training Set (80%)</strong> to build the models and a <strong>Test Set (20%)</strong> to evaluate their final performance.</p></li>
+<li><p><strong>Formative Years</strong>: This decade represents the childhood and teenage years for many in our generation, meaning the music resonates with many of us.</p></li>
+<li><p><strong>Lasting Impact</strong>: The music from this era was exceptionally high-quality and “timeless”, with many tracks still charting or receiving many streams today.</p></li>
+<li><p><strong>Shifting Trends</strong>: The criteria for what makes a song “successful” appeared to undergo significant shifts during this decade compared to those before.</p></li>
 </ul>
 </section>
-<section id="lasso-vs.-ridge" class="level3">
-<h3 class="anchored" data-anchor-id="lasso-vs.-ridge">LASSO vs. Ridge</h3>
-<p>We tested both regularization techniques to see how they handled our feature set:</p>
+<section id="our-goal" class="level3">
+<h3 class="anchored" data-anchor-id="our-goal">Our Goal</h3>
+<p>The primary objective of this study is to predict the charting success of 2010s songs based on their audio characteristics. We aimed to build a classification model capable of differentiating hit songs from non-hit songs with at least <strong>50% accuracy</strong> (better than just random guessing!).</p>
+</section>
+<section id="hypotheses" class="level3">
+<h3 class="anchored" data-anchor-id="hypotheses">Hypotheses</h3>
+<p>Going into our modeling phase, we developed two sets of expectations regarding Spotify’s audio features:</p>
 <ol type="1">
-<li><p><strong>LASSO Regression</strong>: Useful for feature selection, as it can shrink the coefficients of less important variables all the way to zero.</p></li>
-<li><p><strong>Ridge Regression</strong>: Useful for dealing with highly correlated variables (like ‘Energy’ and ‘Loudness’) by shrinking coefficients proportionally without eliminating them.</p></li>
+<li><p><strong>Predictors of Success</strong>: We hypothesized that higher <strong>danceability</strong>, <strong>valence</strong> (musical positiveness), and <strong>loudness</strong> would significantly increase a song’s likelihood of becoming a hit. We also expected the genres <strong>pop</strong> and <strong>hip hop/rap</strong> to be the driving forces of success since these genres seemed to really take over the mainstream during this period. Conversely, we expected lower <strong>duration</strong>, <strong>acousticness</strong>, <strong>speechiness</strong>, and <strong>instrumentalness</strong> to be associated with chart success, as well as genres like <strong>rock</strong>, <strong>folk</strong>, and <strong>classical</strong>.</p></li>
+<li><p><strong>Neutral Elements</strong>: We predicted that features like <strong>key</strong>, <strong>tempo</strong>, <strong>mode</strong>, and whether a song is <strong>explicit</strong> would have little to no measurable effect on a song’s probability of charting.</p></li>
 </ol>
-</section>
-<section id="evaluating-success" class="level3">
-<h3 class="anchored" data-anchor-id="evaluating-success">Evaluating Success</h3>
-<p>We evaluated our models based on three primary metrics: * <strong>Accuracy</strong>: The percentage of correct hit/non-hit predictions.</p>
-<ul>
-<li><p><strong>F1 Score</strong>: The balance between precision and recall.</p></li>
-<li><p><strong>ROC-AUC</strong>: The model’s ability to distinguish between the two classes across various thresholds.</p></li>
-</ul>
-<p>By comparing versions of these models with and without ‘Genre’ as a predictor, we aimed to isolate exactly how much the “sound” of a song matters versus its genre classification.</p>
+<hr>
+<p>Next, we will dive into the <strong>Data and Cleaning</strong> process to show how we narrowed down nearly a million observations into a clean, balanced dataset for our analysis and modeling.</p>
 
 
 </section>

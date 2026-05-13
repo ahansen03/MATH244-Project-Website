@@ -3856,12 +3856,16 @@ vertical-align: -.125em;
 <span class="menu-text">MATH 244: Intermediate Data Science Project</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./notes.html"> 
+    <a class="nav-link" href="./introduction.html"> 
 <span class="menu-text">Introduction</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./data.html" aria-current="page"> 
 <span class="menu-text">Data Sources and Cleaning</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./eda.html"> 
+<span class="menu-text">Exploratory Data Analysis</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./methodology.html"> 
@@ -3891,7 +3895,7 @@ vertical-align: -.125em;
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#our-data-sources" id="toc-our-data-sources" class="nav-link active" data-scroll-target="#our-data-sources">Our Data Sources</a></li>
+  <li><a href="#data-sources-and-cleaning" id="toc-data-sources-and-cleaning" class="nav-link active" data-scroll-target="#data-sources-and-cleaning">Data Sources and Cleaning</a></li>
   <li><a href="#the-cleaning-process" id="toc-the-cleaning-process" class="nav-link" data-scroll-target="#the-cleaning-process">The Cleaning Process</a>
   <ul class="collapse">
   <li><a href="#broadening-the-genre-categories" id="toc-broadening-the-genre-categories" class="nav-link" data-scroll-target="#broadening-the-genre-categories">1. Broadening the Genre Categories</a></li>
@@ -3926,8 +3930,8 @@ vertical-align: -.125em;
 </header>
 
 
-<section id="our-data-sources" class="level2">
-<h2 class="anchored" data-anchor-id="our-data-sources">Our Data Sources</h2>
+<section id="data-sources-and-cleaning" class="level2">
+<h2 class="anchored" data-anchor-id="data-sources-and-cleaning">Data Sources and Cleaning</h2>
 <p>To understand the 2010s music landscape, we utilized the <a href="https://marianaossilva.github.io/DSW2019/"><strong>MusicOSet</strong></a> dataset, which provides an open and enhanced collection of musical elements suitable for data mining. Our analysis relied on three primary files:</p>
 <ol type="1">
 <li><strong>hits_dataset.csv</strong>: Spotify audio features for 11,959 songs that appeared on the Billboard Hot 100.</li>
@@ -3939,7 +3943,7 @@ vertical-align: -.125em;
 <h2 class="anchored" data-anchor-id="the-cleaning-process">The Cleaning Process</h2>
 <section id="broadening-the-genre-categories" class="level3">
 <h3 class="anchored" data-anchor-id="broadening-the-genre-categories">1. Broadening the Genre Categories</h3>
-<p>In the artists dataset, the <code>main_genre</code> entries were often too specific/niche for effective usage We used keyword searches to group these into broader categories such as ‘Pop’, ‘Hip Hop/Rap’, ‘Rock/Metal’, and ‘Electronic/Dance’, among others. Any genres with fewer than 100 associated artists were moved into an ‘Other’ category to maintain statistical significance.</p>
+<p>In the artists dataset, the <code>main_genre</code> entries were too specific/niche for effective usage. We used keyword searches to group these into broader categories such as ‘Pop’, ‘Hip Hop/Rap’, ‘Rock/Metal’, and ‘Electronic/Dance’, among others. Any genres with fewer than 100 associated artists after the combined dataset was made were moved into an ‘Other’ category to maintain statistical significance.</p>
 </section>
 <section id="standardizing-the-2010s-scope" class="level3">
 <h3 class="anchored" data-anchor-id="standardizing-the-2010s-scope">2. Standardizing the 2010s Scope</h3>
@@ -3955,7 +3959,7 @@ vertical-align: -.125em;
 <p>The raw data was heavily skewed toward non-hits (nearly 900,000 non-hits vs. 12,000 hits). To create a fair classification model (one that wouldn’t succeed by guessing “not a hit” everytime), we:</p>
 <ul>
 <li><p>Took a random sample of non-hits equal to the number of hits.</p></li>
-<li><p>This resulted in a final <code>combined_music_data</code> set of <strong>8,132 songs</strong> (4,066 hits and 4,066 non-hits).</p></li>
+<li><p>This resulted in a final <code>combined_music_data</code> set of <strong>7,392 songs</strong> (3,696 hits and 3,696 non-hits).</p></li>
 </ul>
 </section>
 <section id="normalization" class="level3">
@@ -3966,7 +3970,7 @@ vertical-align: -.125em;
 </section>
 <section id="final-dataset-structure-and-codebook" class="level2">
 <h2 class="anchored" data-anchor-id="final-dataset-structure-and-codebook">Final Dataset Structure and Codebook</h2>
-<p>After cleaning, our dataset consisted of 8,132 observations across 16 variables. Below is the summary of our primary explanatory variables after normalization, as well as what they mean and our interpretation of their summary statistics. Unless stated otherwise, 1 indicates a high level of the variable and 0 indicates a low level.</p>
+<p>After cleaning, our dataset consisted of 7,392 observations across 16 variables. Below is the summary of our primary explanatory variables after normalization, as well as what they mean and our interpretation of their summary statistics. Unless stated otherwise, 1 indicates a high level of the variable and 0 indicates a low level.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 18%">
@@ -3988,79 +3992,79 @@ vertical-align: -.125em;
 <tr class="odd">
 <td style="text-align: left;"><strong>duration_ms</strong></td>
 <td style="text-align: left;">Track length, standardized (0 to 1).</td>
-<td style="text-align: center;">0.085</td>
-<td style="text-align: center;">0.032</td>
+<td style="text-align: center;">0.101</td>
+<td style="text-align: center;">0.035</td>
 <td style="text-align: left;">Standardized values reflect a narrow range, indicating high consistency in track length.</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>acousticness</strong></td>
 <td style="text-align: left;">Confidence measure of whether a track is acoustic.</td>
-<td style="text-align: center;">0.329</td>
-<td style="text-align: center;">0.331</td>
+<td style="text-align: center;">0.306</td>
+<td style="text-align: center;">0.327</td>
 <td style="text-align: left;">Low mean suggests a dataset dominated by electric or synthesized production.</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>danceability</strong></td>
 <td style="text-align: left;">Suitability for dancing based on tempo, rhythm, and beat.</td>
-<td style="text-align: center;">0.578</td>
-<td style="text-align: center;">0.161</td>
+<td style="text-align: center;">0.587</td>
+<td style="text-align: center;">0.154</td>
 <td style="text-align: left;">Most tracks lean toward being danceable, aligning with mainstream chart trends.</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>energy</strong></td>
 <td style="text-align: left;">Perceptual measure of intensity and activity.</td>
-<td style="text-align: center;">0.590</td>
-<td style="text-align: center;">0.232</td>
+<td style="text-align: center;">0.596</td>
+<td style="text-align: center;">0.233</td>
 <td style="text-align: left;">Songs generally lean toward high intensity with moderate variation.</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>instrumentalness</strong></td>
 <td style="text-align: left;">Likelihood that a track contains no vocals.</td>
-<td style="text-align: center;">0.119</td>
-<td style="text-align: center;">0.279</td>
+<td style="text-align: center;">0.112</td>
+<td style="text-align: center;">0.272</td>
 <td style="text-align: left;">Low mean confirms the vast majority of tracks are vocal-heavy.</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>liveness</strong></td>
 <td style="text-align: left;">Presence of an audience in the recording.</td>
-<td style="text-align: center;">0.210</td>
-<td style="text-align: center;">0.191</td>
+<td style="text-align: center;">0.205</td>
+<td style="text-align: center;">0.184</td>
 <td style="text-align: left;">Indicates that studio recordings are significantly more prevalent than live versions.</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>loudness</strong></td>
 <td style="text-align: left;">Overall loudness in decibels (dB), standardized (0 to 1).</td>
-<td style="text-align: center;">0.857</td>
-<td style="text-align: center;">0.077</td>
-<td style="text-align: left;">Very high mean and low SD show tracks are consistently mastered at similarly high volumes.</td>
+<td style="text-align: center;">0.781</td>
+<td style="text-align: center;">0.125</td>
+<td style="text-align: left;">High mean and low SD show tracks are consistently mastered at similarly high volumes.</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>speechiness</strong></td>
 <td style="text-align: left;">Presence of spoken words in a track.</td>
-<td style="text-align: center;">0.082</td>
-<td style="text-align: center;">0.104</td>
-<td style="text-align: left;">Confirms the dataset consists almost entirely of music rather than spoken word.</td>
+<td style="text-align: center;">0.087</td>
+<td style="text-align: center;">0.112</td>
+<td style="text-align: left;">Dataset consists almost entirely of music rather than spoken word.</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>valence</strong></td>
 <td style="text-align: left;">Musical positiveness (cheerfulness/euphoria).</td>
-<td style="text-align: center;">0.506</td>
-<td style="text-align: center;">0.247</td>
-<td style="text-align: left;">Shows a balanced mix of “happy” and “sad” emotional tones across the decade.</td>
+<td style="text-align: center;">0.500</td>
+<td style="text-align: center;">0.244</td>
+<td style="text-align: left;">A balanced mix of “happy” and “sad” emotional tones across the decade.</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>tempo</strong></td>
 <td style="text-align: left;">The pace of the track (BPM), standardized (0 to 1).</td>
-<td style="text-align: center;">0.577</td>
+<td style="text-align: center;">0.581</td>
 <td style="text-align: center;">0.139</td>
 <td style="text-align: left;">A healthy, wide distribution covering various speeds and rhythms.</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>explicit</strong></td>
 <td style="text-align: left;">Binary indicator for explicit lyrical content.</td>
-<td style="text-align: center;">0.140</td>
-<td style="text-align: center;">0.347</td>
-<td style="text-align: left;">Only 14% of the sampled tracks contain explicit content labels.</td>
+<td style="text-align: center;">0.156</td>
+<td style="text-align: center;">0.363</td>
+<td style="text-align: left;">~16% of the sampled tracks contain explicit content labels.</td>
 </tr>
 </tbody>
 </table>

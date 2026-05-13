@@ -3856,12 +3856,16 @@ vertical-align: -.125em;
 <span class="menu-text">MATH 244: Intermediate Data Science Project</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./notes.html"> 
+    <a class="nav-link" href="./introduction.html"> 
 <span class="menu-text">Introduction</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./data.html"> 
 <span class="menu-text">Data Sources and Cleaning</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./eda.html"> 
+<span class="menu-text">Exploratory Data Analysis</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./methodology.html"> 
@@ -3886,11 +3890,22 @@ vertical-align: -.125em;
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#reflections-on-the-hit-formula" id="toc-reflections-on-the-hit-formula" class="nav-link active" data-scroll-target="#reflections-on-the-hit-formula">Reflections on the “Hit Formula”</a></li>
+  <li><a href="#limitations-of-the-study" id="toc-limitations-of-the-study" class="nav-link" data-scroll-target="#limitations-of-the-study">Limitations of the Study</a></li>
+  <li><a href="#future-work" id="toc-future-work" class="nav-link" data-scroll-target="#future-work">Future Work</a>
+  <ul class="collapse">
+  <li><a href="#final-takeaway" id="toc-final-takeaway" class="nav-link" data-scroll-target="#final-takeaway">Final Takeaway</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -3900,7 +3915,7 @@ vertical-align: -.125em;
 
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta column-page-left">
 
     
   
@@ -3912,8 +3927,36 @@ vertical-align: -.125em;
 </header>
 
 
+<section id="reflections-on-the-hit-formula" class="level2">
+<h2 class="anchored" data-anchor-id="reflections-on-the-hit-formula">Reflections on the “Hit Formula”</h2>
+<p>Our analysis successfully demonstrated that 2010s chart success is not purely random. By achieving a <strong>67% accuracy rate</strong>, we proved that a significant portion of what makes a “hit” is rooted in the physical and digital DNA of the audio—specifically high danceability, high loudness, and low instrumentalness.</p>
+<p>However, the remaining 33% of “unexplained” success reminds us that the music industry still relies on human elements: marketing budgets, viral social media moments, and the cultural “zeitgeist” that data features cannot always capture.</p>
+</section>
+<section id="limitations-of-the-study" class="level2">
+<h2 class="anchored" data-anchor-id="limitations-of-the-study">Limitations of the Study</h2>
+<p>While our models were robust, we identified several factors that likely capped our accuracy:</p>
+<ul>
+<li><p><strong>The “Remaster” Bias</strong>: Our dataset included some remastered versions of older songs released between 2010 and 2019. These tracks often follow the musical “formula” of a different decade, which may have confused the model’s understanding of the 2010s-specific trends.</p></li>
+<li><p><strong>Streaming Metadata</strong>: Some songs had incorrect release dates due to when they were uploaded to streaming platforms, rather than when they actually debuted on the charts.</p></li>
+<li><p><strong>Data Imbalance by Genre</strong>: While we grouped genres to maintain significance, certain niche genres had far fewer observations, potentially biasing the estimates for those specific categories.</p></li>
+</ul>
+</section>
+<section id="future-work" class="level2">
+<h2 class="anchored" data-anchor-id="future-work">Future Work</h2>
+<p>To build upon these findings, “The Danish Club” suggests several areas for further investigation:</p>
+<ol type="1">
+<li><strong>Collaboration Effects</strong>: Does having a “Featured Artist” (the “feat.” factor) significantly boost a song’s probability of success regardless of its audio features?</li>
+<li><strong>Modern Testing</strong>: We would like to test this 2010s-trained model on songs from the 2020s to see if the “formula” has fundamentally shifted in the new era.</li>
+<li><strong>Deeper Genre Analysis</strong>: Expanding the dataset to include more balanced samples of niche genres to see if the predictors of success change (e.g., is “loudness” as important in Country as it is in EDM?).</li>
+</ol>
+<hr>
+<section id="final-takeaway" class="level3">
+<h3 class="anchored" data-anchor-id="final-takeaway">Final Takeaway</h3>
+<p>While we may not have discovered a perfect formula for success, we have successfully quantified the sound of a decade. For the 2010s, the recipe was clear: make it loud, make it catchy, and keep the instruments in the background.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
