@@ -3895,12 +3895,9 @@ vertical-align: -.125em;
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
-  <ul class="collapse">
-  <li><a href="#why-the-2010s" id="toc-why-the-2010s" class="nav-link" data-scroll-target="#why-the-2010s">Why the 2010s?</a></li>
+  <li><a href="#why-the-2010s" id="toc-why-the-2010s" class="nav-link active" data-scroll-target="#why-the-2010s">Why the 2010s?</a></li>
   <li><a href="#our-goal" id="toc-our-goal" class="nav-link" data-scroll-target="#our-goal">Our Goal</a></li>
   <li><a href="#hypotheses" id="toc-hypotheses" class="nav-link" data-scroll-target="#hypotheses">Hypotheses</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -3927,9 +3924,7 @@ vertical-align: -.125em;
 </header>
 
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>In the music industry, there is a long-standing debate: is a song’s success driven by its quantifiable musical characteristics, or is it a product of “unmeasurables” like marketing, catchiness, pure luck, and timing, among others?</p>
+<p>In the music industry, there is a long-standing debate: is a song’s success driven by its quantifiable musical characteristics, or is it a product of “unmeasurables” like marketing, catchiness, pure luck, and good timing, among others?</p>
 <p>Our project seeks to address this by analyzing a comprehensive sample of hit and non-hit songs released between <strong>2010 and 2019</strong>. We define a “hit” specifically as any song that made an appearance on the <strong>Billboard Hot 100</strong> at some point after its release.</p>
 <section id="why-the-2010s" class="level3">
 <h3 class="anchored" data-anchor-id="why-the-2010s">Why the 2010s?</h3>
@@ -3937,25 +3932,24 @@ vertical-align: -.125em;
 <ul>
 <li><p><strong>Formative Years</strong>: This decade represents the childhood and teenage years for many in our generation, meaning the music resonates with many of us.</p></li>
 <li><p><strong>Lasting Impact</strong>: The music from this era was exceptionally high-quality and “timeless”, with many tracks still charting or receiving many streams today.</p></li>
-<li><p><strong>Shifting Trends</strong>: The criteria for what makes a song “successful” appeared to undergo significant shifts during this decade compared to those before.</p></li>
+<li><p><strong>Shifting Trends</strong>: The criteria for what makes a song “successful” appeared to undergo significant shifts during this decade compared to those preceding it.</p></li>
 </ul>
 </section>
 <section id="our-goal" class="level3">
 <h3 class="anchored" data-anchor-id="our-goal">Our Goal</h3>
-<p>The primary objective of this study is to predict the charting success of 2010s songs based on their audio characteristics. We aimed to build a classification model capable of differentiating hit songs from non-hit songs with at least <strong>50% accuracy</strong> (better than just random guessing!).</p>
+<p>The primary objective of this study is to predict the charting success of 2010s songs based on solely their audio characteristics and genre classifications. We aimed to build a classification model capable of differentiating hit songs from non-hit songs with over <strong>50% accuracy</strong> consistently (better than just random guessing!).</p>
 </section>
 <section id="hypotheses" class="level3">
 <h3 class="anchored" data-anchor-id="hypotheses">Hypotheses</h3>
 <p>Going into our modeling phase, we developed two sets of expectations regarding Spotify’s audio features:</p>
 <ol type="1">
-<li><p><strong>Predictors of Success</strong>: We hypothesized that higher <strong>danceability</strong>, <strong>valence</strong> (musical positiveness), and <strong>loudness</strong> would significantly increase a song’s likelihood of becoming a hit. We also expected the genres <strong>pop</strong> and <strong>hip hop/rap</strong> to be the driving forces of success since these genres seemed to really take over the mainstream during this period. Conversely, we expected lower <strong>duration</strong>, <strong>acousticness</strong>, <strong>speechiness</strong>, and <strong>instrumentalness</strong> to be associated with chart success, as well as genres like <strong>rock</strong>, <strong>folk</strong>, and <strong>classical</strong>.</p></li>
-<li><p><strong>Neutral Elements</strong>: We predicted that features like <strong>key</strong>, <strong>tempo</strong>, <strong>mode</strong>, and whether a song is <strong>explicit</strong> would have little to no measurable effect on a song’s probability of charting.</p></li>
+<li><p><strong>Predictors of Success</strong>: We hypothesized that higher <strong>danceability</strong>, <strong>valence</strong> (musical positiveness), and <strong>loudness</strong> would increase a song’s likelihood of becoming a hit. We also expected <strong>pop</strong> and <strong>hip hop/rap</strong> tracks to be the driving genres of success since the two seemed to take over the mainstream during this period. Conversely, we expected lower <strong>duration</strong>, <strong>acousticness</strong>, <strong>speechiness</strong> (level of spoken word), and <strong>instrumentalness</strong> (likelihood of being an instrumental track) to be associated with chart success. We also expected genres like <strong>rock</strong>, <strong>folk</strong>, and <strong>classical</strong> to indicate less succesful songs, as we do not remember many popular songs of these genres during this period.</p></li>
+<li><p><strong>Neutral Elements</strong>: We predicted that features like <strong>key</strong>, <strong>tempo</strong>, <strong>mode</strong> (major or minor key), and whether a song is <strong>explicit</strong> would have little to no measurable effect on a song’s probability of charting.</p></li>
 </ol>
 <hr>
 <p>Next, we will dive into the <strong>Data and Cleaning</strong> process to show how we narrowed down nearly a million observations into a clean, balanced dataset for our analysis and modeling.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
