@@ -3973,17 +3973,19 @@ vertical-align: -.125em;
 <p>After cleaning, our dataset consisted of 7,392 observations across 16 variables. Below is the summary of our primary explanatory variables after normalization, as well as what they mean and our interpretation of their summary statistics. Unless stated otherwise, 1 indicates a high level of the variable and 0 indicates a low level.</p>
 <table class="caption-top table">
 <colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
 <col style="width: 18%">
 <col style="width: 18%">
-<col style="width: 22%">
-<col style="width: 22%">
 <col style="width: 18%">
+<col style="width: 14%">
 </colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Variable</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: center;">Mean</th>
+<th style="text-align: center;">Median</th>
 <th style="text-align: center;">Std. Dev.</th>
 <th style="text-align: left;">Interpretation</th>
 </tr>
@@ -3992,79 +3994,90 @@ vertical-align: -.125em;
 <tr class="odd">
 <td style="text-align: left;"><strong>duration_ms</strong></td>
 <td style="text-align: left;">Track length, standardized (0 to 1).</td>
-<td style="text-align: center;">0.101</td>
-<td style="text-align: center;">0.035</td>
-<td style="text-align: left;">Standardized values reflect a narrow range, indicating high consistency in track length.</td>
+<td style="text-align: center;">0.047</td>
+<td style="text-align: center;">0.045</td>
+<td style="text-align: center;">0.019</td>
+<td style="text-align: left;">Mean and median are nearly identical, showing a highly symmetrical, consistent distribution of track lengths.</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>acousticness</strong></td>
 <td style="text-align: left;">Confidence measure of whether a track is acoustic.</td>
-<td style="text-align: center;">0.306</td>
-<td style="text-align: center;">0.327</td>
-<td style="text-align: left;">Low mean suggests a dataset dominated by electric or synthesized production.</td>
+<td style="text-align: center;">0.384</td>
+<td style="text-align: center;">0.251</td>
+<td style="text-align: center;">0.362</td>
+<td style="text-align: left;">The median is significantly lower than the mean, indicating a right-skewed distribution dominated by non-acoustic tracks.</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>danceability</strong></td>
 <td style="text-align: left;">Suitability for dancing based on tempo, rhythm, and beat.</td>
-<td style="text-align: center;">0.587</td>
-<td style="text-align: center;">0.154</td>
-<td style="text-align: left;">Most tracks lean toward being danceable, aligning with mainstream chart trends.</td>
+<td style="text-align: center;">0.573</td>
+<td style="text-align: center;">0.585</td>
+<td style="text-align: center;">0.156</td>
+<td style="text-align: left;">High central tendency (~0.58) suggests the dataset consistently favors rhythmically stable, danceable tracks.</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>energy</strong></td>
-<td style="text-align: left;">Perceptual measure of intensity and activity.</td>
-<td style="text-align: center;">0.596</td>
-<td style="text-align: center;">0.233</td>
-<td style="text-align: left;">Songs generally lean toward high intensity with moderate variation.</td>
+<td style="text-align: left;">Measure of intensity and activity.</td>
+<td style="text-align: center;">0.546</td>
+<td style="text-align: center;">0.561</td>
+<td style="text-align: center;">0.254</td>
+<td style="text-align: left;">Tracks generally lean toward higher intensity, with a balanced distribution around the 0.56 mark.</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>instrumentalness</strong></td>
 <td style="text-align: left;">Likelihood that a track contains no vocals.</td>
-<td style="text-align: center;">0.112</td>
-<td style="text-align: center;">0.272</td>
-<td style="text-align: left;">Low mean confirms the vast majority of tracks are vocal-heavy.</td>
+<td style="text-align: center;">0.185</td>
+<td style="text-align: center;">0.000</td>
+<td style="text-align: center;">0.336</td>
+<td style="text-align: left;">A median of 0 confirms that the vast majority of tracks are vocal-heavy, with high SD driven by a few outliers.</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>liveness</strong></td>
 <td style="text-align: left;">Presence of an audience in the recording.</td>
-<td style="text-align: center;">0.205</td>
-<td style="text-align: center;">0.184</td>
-<td style="text-align: left;">Indicates that studio recordings are significantly more prevalent than live versions.</td>
+<td style="text-align: center;">0.217</td>
+<td style="text-align: center;">0.126</td>
+<td style="text-align: center;">0.208</td>
+<td style="text-align: left;">Low median relative to mean suggests a few live tracks pull the average up, but studio recordings are the standard.</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>loudness</strong></td>
 <td style="text-align: left;">Overall loudness in decibels (dB), standardized (0 to 1).</td>
-<td style="text-align: center;">0.781</td>
-<td style="text-align: center;">0.125</td>
-<td style="text-align: left;">High mean and low SD show tracks are consistently mastered at similarly high volumes.</td>
+<td style="text-align: center;">0.822</td>
+<td style="text-align: center;">0.845</td>
+<td style="text-align: center;">0.087</td>
+<td style="text-align: left;">Very high median and low SD indicate tracks are extremely and consistently compressed at high volumes.</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>speechiness</strong></td>
 <td style="text-align: left;">Presence of spoken words in a track.</td>
-<td style="text-align: center;">0.087</td>
-<td style="text-align: center;">0.112</td>
-<td style="text-align: left;">Dataset consists almost entirely of music rather than spoken word.</td>
+<td style="text-align: center;">0.089</td>
+<td style="text-align: center;">0.044</td>
+<td style="text-align: center;">0.128</td>
+<td style="text-align: left;">Low median confirms the samples are almost exclusively melodic music rather than spoken-word content.</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>valence</strong></td>
-<td style="text-align: left;">Musical positiveness (cheerfulness/euphoria).</td>
-<td style="text-align: center;">0.500</td>
+<td style="text-align: left;">Musical positiveness.</td>
+<td style="text-align: center;">0.471</td>
+<td style="text-align: center;">0.449</td>
 <td style="text-align: center;">0.244</td>
-<td style="text-align: left;">A balanced mix of “happy” and “sad” emotional tones across the decade.</td>
+<td style="text-align: left;">Both measures sit near the center, reflecting a diverse emotional range.</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>tempo</strong></td>
-<td style="text-align: left;">The pace of the track (BPM), standardized (0 to 1).</td>
-<td style="text-align: center;">0.581</td>
-<td style="text-align: center;">0.139</td>
-<td style="text-align: left;">A healthy, wide distribution covering various speeds and rhythms.</td>
+<td style="text-align: left;">Speed of the track (BPM), standardized (0 to 1).</td>
+<td style="text-align: center;">0.489</td>
+<td style="text-align: center;">0.486</td>
+<td style="text-align: center;">0.120</td>
+<td style="text-align: left;">Values are tightly clustered around the center, indicating a lack of extreme outliers in speed.</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>explicit</strong></td>
 <td style="text-align: left;">Binary indicator for explicit lyrical content.</td>
-<td style="text-align: center;">0.156</td>
-<td style="text-align: center;">0.363</td>
-<td style="text-align: left;">~16% of the sampled tracks contain explicit content labels.</td>
+<td style="text-align: center;">0.117</td>
+<td style="text-align: center;">0.000</td>
+<td style="text-align: center;">0.321</td>
+<td style="text-align: left;">A mean of ~12% indicates that while present, explicit tracks are the minority in this dataset.</td>
 </tr>
 </tbody>
 </table>

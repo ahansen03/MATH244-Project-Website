@@ -3929,30 +3929,32 @@ vertical-align: -.125em;
 
 <section id="reflections-on-the-hit-formula" class="level2">
 <h2 class="anchored" data-anchor-id="reflections-on-the-hit-formula">Reflections on the “Hit Formula”</h2>
-<p>Our analysis successfully demonstrated that 2010s chart success is not purely random. By achieving a <strong>67% accuracy rate</strong>, we proved that a significant portion of what makes a “hit” is rooted in the physical and digital DNA of the audio—specifically high danceability, high loudness, and low instrumentalness.</p>
-<p>However, the remaining 33% of “unexplained” success reminds us that the music industry still relies on human elements: marketing budgets, viral social media moments, and the cultural “zeitgeist” that data features cannot always capture.</p>
+<p>Our analysis successfully demonstrated that 2010s chart success is not purely random. By consistently achieving a <strong>69% accuracy rate</strong>, we proved that a significant portion of what makes a “hit” is rooted in the characteristics of the audio—most notably the genre, danceability, loudness, and instrumentalness.</p>
+<p>However, the remaining 31% of “unexplained” success indicates unmeasurables still play a significant role: marketing, social media virality, and good timing, among others.</p>
 </section>
 <section id="limitations-of-the-study" class="level2">
 <h2 class="anchored" data-anchor-id="limitations-of-the-study">Limitations of the Study</h2>
-<p>While our models were robust, we identified several factors that likely capped our accuracy:</p>
+<p>While our models were robust, we identified several factors that likely hindered our results:</p>
 <ul>
 <li><p><strong>The “Remaster” Bias</strong>: Our dataset included some remastered versions of older songs released between 2010 and 2019. These tracks often follow the musical “formula” of a different decade, which may have confused the model’s understanding of the 2010s-specific trends.</p></li>
+<li><p><strong>Incorrect Labeling</strong>: During our exploration of the data we noted that hit songs uploaded by other people were labeled as hits even if the artist that uploaded the song was not the original artist. This includes DJ mixes, compilations, and “slowed and reverb” mixes. This poses an issue because the reuploader’s discography was included in our datasets even though they did not have a hit themselves. It was difficult to detect these inconsistencies and although we tried to omit as many of those as possible, it was likely that some remained in the final data set.</p></li>
 <li><p><strong>Streaming Metadata</strong>: Some songs had incorrect release dates due to when they were uploaded to streaming platforms, rather than when they actually debuted on the charts.</p></li>
-<li><p><strong>Data Imbalance by Genre</strong>: While we grouped genres to maintain significance, certain niche genres had far fewer observations, potentially biasing the estimates for those specific categories.</p></li>
+<li><p><strong>Data Imbalance by Genre</strong>: While we grouped genres to maintain significance, certain niche genres had significantly fewer observations, potentially biasing the estimates for those specific categories. Furthermore, some of the genres had a smaller group of artists that resided in them, making the genres more of a variable representing that collection of artists rather than the genre itself.</p></li>
 </ul>
 </section>
 <section id="future-work" class="level2">
 <h2 class="anchored" data-anchor-id="future-work">Future Work</h2>
 <p>To build upon these findings, “The Danish Club” suggests several areas for further investigation:</p>
 <ol type="1">
-<li><strong>Collaboration Effects</strong>: Does having a “Featured Artist” (the “feat.” factor) significantly boost a song’s probability of success regardless of its audio features?</li>
-<li><strong>Modern Testing</strong>: We would like to test this 2010s-trained model on songs from the 2020s to see if the “formula” has fundamentally shifted in the new era.</li>
+<li><strong>Collaboration Effects</strong>: Do collaborations significantly boost a song’s probability of success regardless of its audio features?</li>
+<li><strong>Artist Popularity</strong>: Controlling for an artist’s popularity at the time the song was released could greatly enhance our predictions.</li>
+<li><strong>Modern Testing</strong>: We would like to test this 2010s-trained model on songs from the 2020s to see if the “formula” has fundamentally shifted in the new era, although the data sources stopped collecting data in late 2019.</li>
 <li><strong>Deeper Genre Analysis</strong>: Expanding the dataset to include more balanced samples of niche genres to see if the predictors of success change (e.g., is “loudness” as important in Country as it is in EDM?).</li>
 </ol>
 <hr>
 <section id="final-takeaway" class="level3">
 <h3 class="anchored" data-anchor-id="final-takeaway">Final Takeaway</h3>
-<p>While we may not have discovered a perfect formula for success, we have successfully quantified the sound of a decade. For the 2010s, the recipe was clear: make it loud, make it catchy, and keep the instruments in the background.</p>
+<p>While we may not have discovered a perfect formula for success, we have successfully identified key factors that likely influence song popularity in the 2010s. Genre was the dominant force, with Soundtrack/Theater, Country, and Soul/R&amp;B/Funk indicating that songs were more likely to be hits, whereas Comedy/Entertainment pointed towards a nonhit. When genre was ommitted, we got a clearer view of how the audio characteristics played a role in the song’s success, while only losing about 3% in accuracy. Instrumental, live, and spoken word tracks strongly indicated less success and loud, explicit, and happier songs indicated more success.</p>
 
 
 </section>
