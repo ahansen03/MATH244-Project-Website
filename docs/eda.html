@@ -3928,7 +3928,7 @@ vertical-align: -.125em;
 <p>To understand the characteristics of hit versus non-hit songs in our dataset, we conducted a comprehensive exploratory data analysis (EDA) of the audio features from Spotify. This section reveals important patterns in our data and helps validate our initial hypotheses about what makes a song successful.</p>
 <section id="hit-rate-by-genre" class="level3">
 <h3 class="anchored" data-anchor-id="hit-rate-by-genre">Hit Rate by Genre</h3>
-<p>We began by examining whether certain genres were more likely to produce chart-topping hits. The results, shown below, demonstrate clear variation in success rates across genres for :</p>
+<p>We began by examining whether certain genres were more likely to produce chart-topping hits. The results, shown below, demonstrate clear variation in success rates across genres:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -4013,7 +4013,7 @@ vertical-align: -.125em;
 </tr>
 </tbody>
 </table>
-<p>Soundtrack/Theater, Country, and Soul/R&amp;B/Funk songs had the highest hit rates, ranging from ~6-9%. In contrast, Children’s Music and Comedy/Entertainment had the lowest rates, below 0.5% each. This suggests that certain genres have intrinsically different likelihood of achieving mainstream success. Interestingly, Pop and Hip Hop/Rap—our expectations of the most dominant genres during this period—had a moderate hit rate of ~5% each, possibly indicating an oversaturation in the market.</p>
+<p>Soundtrack/Theater, Country, and Soul/R&amp;B/Funk songs had the highest hit rates, ranging from ~6-9%. In contrast, Children’s Music and Comedy/Entertainment had the lowest rates, below 0.5% each. This suggests that certain genres have intrinsically different likelihoods of achieving mainstream success. Interestingly, Pop and Hip Hop/Rap—our expectations of the most dominant genres during this period—had a moderate hit rate of ~5% each, possibly indicating an oversaturation in the market.</p>
 </section>
 <section id="temporal-trends-in-audio-features" class="level3">
 <h3 class="anchored" data-anchor-id="temporal-trends-in-audio-features">Temporal Trends in Audio Features</h3>
@@ -4071,8 +4071,8 @@ vertical-align: -.125em;
 <ul>
 <li><p><strong>Energy and Loudness</strong> (r = 0.82): These features are highly correlated, which makes intuitive sense—louder songs tend to be more energetic.</p></li>
 <li><p><strong>Acousticness and Energy</strong> (r = -0.73): A strong negative correlation confirms that acoustic songs tend to be quieter and less energetic.</p></li>
-<li><p><strong>Acousticness and Loudness</strong> (r = -0.67): As expected from the above, acoustic songs tends to be quieter.</p></li>
-<li><p><strong>Acousticness and Instrumentalness</strong> (r = 0.50): Songs with more acoustics tend to have a high instrumentalness rather than vocals.</p></li>
+<li><p><strong>Acousticness and Loudness</strong> (r = -0.67): As expected from the above, acoustic songs tend to be quieter.</p></li>
+<li><p><strong>Acousticness and Instrumentalness</strong> (r = 0.50): Songs with higher acousticness tend to have a high instrumentalness rather than vocals.</p></li>
 </ul>
 <p>-<strong>Valence and Danceability/Energy</strong> (r = 0.38): A slightly weaker correlation demonstrates that happier songs tend to have slightly higher levels of danceability and energy.</p>
 <p>These correlations suggest potential <strong>multicollinearity</strong> issues in our data—some features are redundant predictors of a similar musical idea. This will be important to consider when building our models, as highly correlated predictors can increase variance and make it difficult to tell which predictors actually matter.</p>
@@ -4081,9 +4081,9 @@ vertical-align: -.125em;
 <h3 class="anchored" data-anchor-id="summary-of-eda-findings">Summary of EDA Findings</h3>
 <p>Our exploratory analysis provides strong preliminary support for our initial hypotheses:</p>
 <ol type="1">
-<li><strong>Energy, danceability, and valence</strong> tend to be higher in hit songs</li>
-<li><strong>Acousticness</strong> tends to be lower in hit songs</li>
-<li>Hit rates vary dramatically by genre, indicating that commercial success is partly driven by the music category itself. We will exactly to what extent after we run our models!</li>
+<li>Energy, danceability, and valence tend to be higher in hit songs</li>
+<li>Acousticness tends to be lower in hit songs</li>
+<li>Hit rates vary dramatically by genre, indicating that commercial success is partly driven by the music category itself. We will determine/see exactly to what extent after we run our models!</li>
 <li>All features showed year-to-year fluctuations (e.g. energy levels between hits/nonhits seem to be converging), suggesting that the expectations for a hit may shift over time.</li>
 <li>The correlation map suggests possible multicollinearity issues, which we’ll address during the modeling phase through model and feature selection.</li>
 </ol>

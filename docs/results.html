@@ -3929,7 +3929,7 @@ vertical-align: -.125em;
 <section id="model-performance" class="level2">
 <h2 class="anchored" data-anchor-id="model-performance">Model Performance</h2>
 <p>Our primary goal was to differentiate between hit and non-hit songs with better than 50% accuracy. Both our LASSO and Ridge models successfully exceeded this threshold, achieving approximately <strong>69% accuracy</strong> on the test data when genre was included as a predictor.</p>
-<p>When running our models, we had originally set a constant seed number when choosing the subset of the nonhits dataset to use. The exploratory data analysis results thus far reflect those resulting from our seed seelction of 67. However, we wanted to know how the model would perform when a different subset was chosen. For this reason, the figures below reflect the results from an average of five randomly-chosen seed numbers.</p>
+<p>When running our models, we had originally set a constant seed number when choosing the subset of the nonhits dataset to use. However, we wanted to know how the model would perform when a different subset was chosen. For this reason, the figures below reflect the results from an average of five randomly-chosen seed numbers.</p>
 <section id="key-model-metrics-and-features" class="level3">
 <h3 class="anchored" data-anchor-id="key-model-metrics-and-features">Key Model Metrics and Features</h3>
 <p>Whether we used the L1 (LASSO) or L2 (Ridge) penalty, the performance was fairly consistent:</p>
@@ -4102,7 +4102,7 @@ vertical-align: -.125em;
 </tr>
 </tbody>
 </table>
-<p>It is evident that genre is the main factor driving our predictions. For this reason, we might expect model accuracy to decrease significantly when genre is not included. Interestingly, removing “Genre” as a predictor only decreased the accuracy by around 3%, suggesting that the raw audio characteristics themselves carry significant weight regardless of how the song is categorized. The table below demonstrates the top 7 most influential predictors when genre was not included across the two models (the other predictors had very small coefficients or sent to 0):</p>
+<p>It is evident that genre is the main factor driving our predictions. For this reason, we might expect model accuracy to decrease significantly when genre is not included. Interestingly, removing “Genre” as a predictor only decreased the accuracy by around 3%, suggesting that the raw audio characteristics themselves carry significant weight regardless of how the song is categorized. The table below demonstrates the top 7 most influential predictors when genre was not included across the two models (the other predictors had very small coefficients or shrank to 0):</p>
 </section>
 <section id="top-7-features-lasso-no-genre" class="level4">
 <h4 class="anchored" data-anchor-id="top-7-features-lasso-no-genre">Top 7 Features (LASSO, no genre)</h4>

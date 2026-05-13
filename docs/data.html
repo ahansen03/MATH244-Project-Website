@@ -3946,13 +3946,13 @@ vertical-align: -.125em;
 <p>We applied several filters to our hits and nonhits datasets:</p>
 <ul>
 <li><p><strong>Timeframe</strong>: We only kept tracks with a release date between 2010 and 2019, since this is the scope of interest. Since the provided <code>release_date</code> was based on when the song was uploaded to Spotify, artists whose older music (typically made before the streaming era) was added to Spotify during this period were also removed.</p></li>
-<li><p><strong>Consistency</strong>: We dropped songs by artists who did not have at least one hit during this specific decade (to create two comparable datasets where popularity of the arist during this period is less of a factor).</p></li>
+<li><p><strong>Consistency</strong>: We dropped songs by artists who did not have at least one hit during this specific decade (to create two comparable datasets where popularity of the artist during this period is less of a factor).</p></li>
 <li><p><strong>Outlier/Missing Artist Removal</strong>: We identified and removed certain “artists” who uploaded extremely long mixes of multiple songs (like workout mixes), which skewed our <code>duration_ms</code> column. We also removed artists that were not found in the artists dataset, and thus wouldn’t have been able to be assigned to a genre.</p></li>
 </ul>
 </section>
 <section id="balancing-the-dataset" class="level3">
 <h3 class="anchored" data-anchor-id="balancing-the-dataset">3. Balancing the Dataset</h3>
-<p>The raw data was heavily skewed toward non-hits (nearly 900,000 non-hits vs. 12,000 hits). To create a fair classification model (one that wouldn’t succeed by guessing “not a hit” everytime), we:</p>
+<p>The raw data was heavily skewed toward non-hits (nearly 900,000 non-hits vs. 12,000 hits). To create a fair classification model (one that wouldn’t succeed by guessing “not a hit” every time), we:</p>
 <ul>
 <li><p>Took a random sample of non-hits equal to the number of hits.</p></li>
 <li><p>This resulted in a final <code>combined_music_data</code> set of <strong>7,392 songs</strong> (3,696 hits and 3,696 non-hits).</p></li>
