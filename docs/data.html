@@ -3966,7 +3966,7 @@ vertical-align: -.125em;
 </section>
 <section id="final-dataset-structure-and-codebook" class="level2">
 <h2 class="anchored" data-anchor-id="final-dataset-structure-and-codebook">Final Dataset Structure and Codebook</h2>
-<p>After cleaning, our dataset consisted of 7,392 observations across 16 variables. Below is the summary of our primary explanatory variables after normalization, as well as what they mean and our interpretation of their summary statistics. Unless stated otherwise, 1 indicates a high level of the variable and 0 indicates a low level.</p>
+<p>Below is the summary of our primary explanatory variables after normalization, as well as what they mean and our interpretation of their summary statistics. Unless stated otherwise, 1 indicates a high level of the variable and 0 indicates a low level. These statistics are for the entire 2010s dataset (~100,000 songs after cleaning), not for the balanced dataset of hits and nonhits.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 14%">
@@ -4009,7 +4009,7 @@ vertical-align: -.125em;
 <td style="text-align: center;">0.573</td>
 <td style="text-align: center;">0.585</td>
 <td style="text-align: center;">0.156</td>
-<td style="text-align: left;">High central tendency (~0.58) suggests the dataset consistently favors rhythmically stable, danceable tracks.</td>
+<td style="text-align: left;">The dataset leans towards rhythmically stable, danceable tracks.</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>energy</strong></td>
@@ -4017,7 +4017,7 @@ vertical-align: -.125em;
 <td style="text-align: center;">0.546</td>
 <td style="text-align: center;">0.561</td>
 <td style="text-align: center;">0.254</td>
-<td style="text-align: left;">Tracks generally lean toward higher intensity, with a balanced distribution around the 0.56 mark.</td>
+<td style="text-align: left;">The dataset leans towards higher intensity tracks.</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>instrumentalness</strong></td>
@@ -4025,7 +4025,7 @@ vertical-align: -.125em;
 <td style="text-align: center;">0.185</td>
 <td style="text-align: center;">0.000</td>
 <td style="text-align: center;">0.336</td>
-<td style="text-align: left;">A median of 0 confirms that the vast majority of tracks are vocal-heavy, with high SD driven by a few outliers.</td>
+<td style="text-align: left;">A median of 0 confirms that the vast majority of tracks are vocal-heavy, with high SD driven by a small group of instrumental tracks</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>liveness</strong></td>
@@ -4041,7 +4041,7 @@ vertical-align: -.125em;
 <td style="text-align: center;">0.822</td>
 <td style="text-align: center;">0.845</td>
 <td style="text-align: center;">0.087</td>
-<td style="text-align: left;">Very high median and low SD indicate tracks are extremely and consistently compressed at high volumes.</td>
+<td style="text-align: left;">Indicates that tracks are consistently compressed at similar, high volumes, with a few quiet outliers.</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>speechiness</strong></td>
@@ -4049,7 +4049,7 @@ vertical-align: -.125em;
 <td style="text-align: center;">0.089</td>
 <td style="text-align: center;">0.044</td>
 <td style="text-align: center;">0.128</td>
-<td style="text-align: left;">Low median confirms the samples are almost exclusively melodic music rather than spoken-word content.</td>
+<td style="text-align: left;">Low median confirms the tracks are almost exclusively melodic music rather than spoken-word.</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>valence</strong></td>
@@ -4065,7 +4065,7 @@ vertical-align: -.125em;
 <td style="text-align: center;">0.489</td>
 <td style="text-align: center;">0.486</td>
 <td style="text-align: center;">0.120</td>
-<td style="text-align: left;">Values are tightly clustered around the center, indicating a lack of extreme outliers in speed.</td>
+<td style="text-align: left;">Values are fairly central, indicating a lack of extreme outliers.</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>explicit</strong></td>
@@ -4073,7 +4073,7 @@ vertical-align: -.125em;
 <td style="text-align: center;">0.117</td>
 <td style="text-align: center;">0.000</td>
 <td style="text-align: center;">0.321</td>
-<td style="text-align: left;">A mean of ~12% indicates that while present, explicit tracks are the minority in this dataset.</td>
+<td style="text-align: left;">Indicates that explicit tracks make up 12% of our dataset.</td>
 </tr>
 </tbody>
 </table>
@@ -4082,7 +4082,7 @@ vertical-align: -.125em;
 <li><p><strong>key</strong>: estimated overall key of the track, maps pitches to integers using standard Pitch Class notation (-1 = no key detected, 0 = key of C, …, 11 = key of B).</p></li>
 <li><p><strong>mode</strong>: indicator of what kind of scale was used (1 = major scale, 0 = minor scale)</p></li>
 <li><p><strong>genre</strong>: genre that the main artist of a track is associated with</p></li>
-<li><p><strong>hit</strong>: boolean indicating if a song reached the Billboard Hot 100</p></li>
+<li><p><strong>hit</strong>: logical indicating if a song reached the Billboard Hot 100</p></li>
 </ul>
 <hr>
 <p>Next, we will conduct some <strong>Exploratory Data Analysis</strong> to outline the structure of the dataset and demonstrate what characteristics might end up being important.</p>
